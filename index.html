@@ -14,7 +14,7 @@
             padding: 0;
             box-sizing: border-box;
         }
- 
+
         :root {
             --primary: #d4a574;
             --dark: #2c1810;
@@ -22,24 +22,24 @@
             --text: #3a2817;
             --accent: #8b6f47;
         }
- 
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: var(--text);
             background: var(--light);
         }
- 
+
         a {
             color: var(--primary);
             text-decoration: none;
             transition: color 0.3s;
         }
- 
+
         a:hover {
             color: var(--accent);
         }
- 
+
         /* HEADER */
         header {
             background: var(--dark);
@@ -50,44 +50,44 @@
             z-index: 100;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
- 
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
- 
+
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
- 
+
         .logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
- 
+
         .logo img {
             height: 50px;
             width: auto;
         }
- 
+
         .nav {
             display: flex;
             gap: 2rem;
         }
- 
+
         .nav a {
             color: white;
             font-size: 0.95rem;
         }
- 
+
         .nav a:hover {
             color: var(--primary);
         }
- 
+
         /* HERO */
         .hero {
             background: linear-gradient(135deg, var(--dark) 0%, #3d2514 100%);
@@ -95,27 +95,27 @@
             padding: 60px 20px;
             text-align: center;
         }
- 
+
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
- 
+
         .hero .tagline {
             font-size: 1.2rem;
             color: var(--primary);
             margin-bottom: 1rem;
             font-weight: 500;
         }
- 
+
         .hero p {
             font-size: 1rem;
             max-width: 600px;
             margin: 0 auto 2rem;
             line-height: 1.8;
         }
- 
+
         .cta-primary {
             display: inline-block;
             background: var(--primary);
@@ -126,25 +126,25 @@
             transition: all 0.3s;
             border: 2px solid var(--primary);
         }
- 
+
         .cta-primary:hover {
             background: transparent;
             color: var(--primary);
         }
- 
+
         /* DIFERENCIAL */
         .diferencial {
             padding: 60px 20px;
             background: white;
         }
- 
+
         .diferencial h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
             color: var(--dark);
         }
- 
+
         .comparison {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -152,40 +152,40 @@
             max-width: 900px;
             margin: 0 auto;
         }
- 
+
         .comparison-item {
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
         }
- 
+
         .comparison-item.ambar {
             background: #f0e6d2;
             border: 3px solid var(--primary);
         }
- 
+
         .comparison-item.otros {
             background: #e8e8e8;
             border: 3px solid #999;
         }
- 
+
         .comparison-item h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--dark);
         }
- 
+
         .comparison-item ul {
             list-style: none;
             text-align: left;
         }
- 
+
         .comparison-item li {
             padding: 0.5rem 0;
             padding-left: 1.5rem;
             position: relative;
         }
- 
+
         .ambar li:before {
             content: "✓";
             position: absolute;
@@ -193,27 +193,27 @@
             color: var(--primary);
             font-weight: bold;
         }
- 
+
         .otros li:before {
             content: "•";
             position: absolute;
             left: 0;
             color: #999;
         }
- 
+
         /* PROCESO */
         .proceso {
             padding: 60px 20px;
             background: white;
         }
- 
+
         .proceso h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
             color: var(--dark);
         }
- 
+
         .proceso-contenido {
             max-width: 1100px;
             margin: 0 auto;
@@ -222,25 +222,25 @@
             gap: 3rem;
             align-items: center;
         }
- 
+
         .proceso-texto p {
             margin-bottom: 1.2rem;
             line-height: 1.8;
             color: var(--text);
             font-size: 1rem;
         }
- 
+
         .proceso-texto strong {
             color: var(--primary);
         }
- 
+
         .proceso-visual {
             display: grid;
             grid-template-columns: 1fr 50px 1fr 50px 1fr 50px 1fr;
             gap: 0.5rem;
             align-items: center;
         }
- 
+
         .proceso-paso {
             background: var(--light);
             padding: 1.5rem;
@@ -248,7 +248,7 @@
             text-align: center;
             border: 2px solid var(--primary);
         }
- 
+
         .paso-numero {
             display: inline-flex;
             align-items: center;
@@ -262,60 +262,60 @@
             font-size: 1.2rem;
             margin-bottom: 0.8rem;
         }
- 
+
         .proceso-paso p {
             font-size: 0.85rem;
             margin: 0;
             color: var(--text);
         }
- 
+
         .paso-numero-flecha {
             text-align: center;
             color: var(--primary);
             font-size: 1.5rem;
             font-weight: bold;
         }
- 
+
         /* RESPONSIVE PROCESO */
         @media (max-width: 768px) {
             .proceso-contenido {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
- 
+
             .proceso-visual {
                 grid-template-columns: 1fr 30px 1fr;
                 gap: 0.3rem;
             }
- 
+
             .paso-numero-flecha {
                 display: none;
             }
- 
+
             .proceso-paso {
                 padding: 1rem;
             }
- 
+
             .paso-numero {
                 width: 35px;
                 height: 35px;
                 font-size: 1rem;
             }
         }
- 
+
         /* VARIEDADES */
         .variedades {
             padding: 60px 20px;
             background: var(--light);
         }
- 
+
         .variedades h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
             color: var(--dark);
         }
- 
+
         .grid-variedades {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -323,7 +323,7 @@
             max-width: 1100px;
             margin: 0 auto;
         }
- 
+
         .variedad-card {
             background: white;
             border-radius: 10px;
@@ -331,12 +331,12 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
         }
- 
+
         .variedad-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         }
- 
+
         .variedad-imagen {
             width: 100%;
             height: 200px;
@@ -348,50 +348,50 @@
             color: white;
             text-align: center;
         }
- 
+
         .variedad-info {
             padding: 1.5rem;
         }
- 
+
         .variedad-info h3 {
             color: var(--primary);
             font-size: 1.3rem;
             margin-bottom: 0.3rem;
         }
- 
+
         .variedad-flor {
             color: var(--accent);
             font-size: 0.9rem;
             font-style: italic;
             margin-bottom: 0.8rem;
         }
- 
+
         .variedad-desc {
             font-size: 0.95rem;
             color: var(--text);
             margin-bottom: 0.8rem;
             line-height: 1.6;
         }
- 
+
         .variedad-precio {
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary);
         }
- 
+
         /* TESTIMONIOS */
         .testimonios {
             padding: 60px 20px;
             background: white;
         }
- 
+
         .testimonios h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 3rem;
             color: var(--dark);
         }
- 
+
         .testimonios-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -399,39 +399,39 @@
             max-width: 1000px;
             margin: 0 auto;
         }
- 
+
         .testimonio {
             background: var(--light);
             padding: 1.5rem;
             border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
- 
+
         .testimonio p {
             font-style: italic;
             margin-bottom: 1rem;
             color: #555;
         }
- 
+
         .testimonio-autor {
             font-weight: 600;
             color: var(--dark);
             font-size: 0.9rem;
         }
- 
+
         /* ENVIOS */
         .envios {
             padding: 60px 20px;
             background: var(--light);
         }
- 
+
         .envios h2 {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 2rem;
             color: var(--dark);
         }
- 
+
         .envios-info {
             max-width: 700px;
             margin: 0 auto;
@@ -441,12 +441,12 @@
             text-align: center;
             border: 2px solid var(--primary);
         }
- 
+
         .envios-info p {
             margin-bottom: 1rem;
             font-size: 1rem;
         }
- 
+
         /* FOOTER */
         footer {
             background: var(--dark);
@@ -454,13 +454,13 @@
             padding: 3rem 20px;
             text-align: center;
         }
- 
+
         .footer-content {
             max-width: 800px;
             margin: 0 auto;
             margin-bottom: 2rem;
         }
- 
+
         .footer-cta {
             display: flex;
             gap: 1.5rem;
@@ -468,7 +468,7 @@
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
- 
+
         .footer-cta a {
             display: inline-block;
             background: var(--primary);
@@ -479,60 +479,60 @@
             font-size: 0.95rem;
             transition: all 0.3s;
         }
- 
+
         .footer-cta a:hover {
             background: white;
             color: var(--dark);
         }
- 
+
         .sociales {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             margin-bottom: 2rem;
         }
- 
+
         .sociales a {
             color: var(--primary);
             font-weight: 600;
             transition: color 0.3s;
         }
- 
+
         .sociales a:hover {
             color: white;
         }
- 
+
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.2);
             padding-top: 1.5rem;
             font-size: 0.9rem;
             color: #ccc;
         }
- 
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
             }
- 
+
             .hero .tagline {
                 font-size: 1rem;
             }
- 
+
             .comparison {
                 grid-template-columns: 1fr;
             }
- 
+
             .nav {
                 gap: 1rem;
                 font-size: 0.9rem;
             }
- 
+
             .testimonios-grid,
             .grid-variedades {
                 grid-template-columns: 1fr;
             }
- 
+
             .footer-cta {
                 flex-direction: column;
                 gap: 1rem;
@@ -545,7 +545,7 @@
     <header>
         <div class="container">
             <div class="logo">
-                <img src="assets/images/logo_ambar.jpg" alt="AMBAR Logo">
+                <img src="logo_ambar.jpg" alt="AMBAR Logo">
             </div>
             <nav class="nav">
                 <a href="#variedades">Variedades</a>
@@ -554,7 +554,7 @@
             </nav>
         </div>
     </header>
- 
+
     <!-- HERO -->
     <section class="hero">
         <div class="container">
@@ -568,7 +568,7 @@
             <a href="#contacto" class="cta-primary">Conocer Variedades</a>
         </div>
     </section>
- 
+
     <!-- DIFERENCIAL -->
     <section class="diferencial">
         <div class="container">
@@ -601,7 +601,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- PROCESO -->
     <section class="proceso">
         <div class="container">
@@ -651,7 +651,7 @@
             <div class="grid-variedades">
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN MISTOL]
+                        <img src="mistol.jpg" alt="Miel de Mistol" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>🌟 Miel de Mistol</h3>
@@ -660,10 +660,10 @@
                         <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
                     </div>
                 </div>
- 
+
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN JARILLA]
+                        <img src="jarilla.jpg" alt="Miel de Jarilla" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>Miel de Jarilla</h3>
@@ -672,10 +672,10 @@
                         <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
                     </div>
                 </div>
- 
+
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN ALGARROBO]
+                        <img src="algarrobo.jpg" alt="Miel de Algarrobo" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>Miel de Algarrobo</h3>
@@ -684,10 +684,10 @@
                         <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
                     </div>
                 </div>
- 
+
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN ACACIA]
+                        <img src="acacia.jpg" alt="Miel de Acacia" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>Miel de Acacia</h3>
@@ -696,10 +696,10 @@
                         <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
                     </div>
                 </div>
- 
+
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN ROMERO]
+                        <img src="romero.jpg" alt="Miel de Romero" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>Miel de Romero</h3>
@@ -708,10 +708,10 @@
                         <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
                     </div>
                 </div>
- 
+
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN ATAMISKY]
+                        <img src="atamisky.jpg" alt="Miel de Atamisky" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>Miel de Atamisky</h3>
@@ -720,10 +720,10 @@
                         <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
                     </div>
                 </div>
- 
+
                 <div class="variedad-card">
                     <div class="variedad-imagen">
-                        [IMAGEN MULTIFLORAL]
+                        <img src="mistol.jpg" alt="Miel Multifloral" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="variedad-info">
                         <h3>Miel Multifloral</h3>
@@ -735,7 +735,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- TESTIMONIOS -->
     <section class="testimonios">
         <div class="container">
@@ -756,7 +756,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- ENVIOS -->
     <section class="envios" id="envios">
         <div class="container">
@@ -768,7 +768,7 @@
             </div>
         </div>
     </section>
- 
+
     <!-- FOOTER -->
     <footer id="contacto">
         <div class="footer-content">
@@ -792,4 +792,3 @@
     </footer>
 </body>
 </html>
- 
