@@ -7,7 +7,7 @@
     <meta name="og:title" content="AMBAR Patagonia - Miel Premium de Córdoba">
     <meta name="og:description" content="Miel monofloral artesanal de las sierras de Córdoba. Calidad superior a la miel multifloral de Entre Ríos.">
     <meta name="og:image" content="logo_ambar.jpg">
-    <title>AMBAR Patagonia - Miel Pura y Artesanal </title>
+    <title>AMBAR Patagonia - Miel Premium de Córdoba</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -224,7 +224,8 @@
         /* DIFERENCIAL */
         .diferencial {
             padding: 90px 20px;
-            background: white;
+            background: linear-gradient(135deg, rgba(35, 24, 21, 0.75) 0%, rgba(46, 31, 27, 0.75) 100%),
+                        url('portada2.jpg') center/cover no-repeat;
             position: relative;
         }
 
@@ -241,7 +242,16 @@
             position: relative;
         }
 
-        .diferencial h2::after, 
+        .diferencial h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #F4A030;
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
         .proceso h2::after, 
         .variedades h2::after, 
         .testimonios h2::after, 
@@ -747,11 +757,11 @@
     <!-- DIFERENCIAL -->
     <section class="diferencial">
         <div class="container">
-            <h2>¿Por qué AMBAR es diferente?</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.15rem; color: var(--text-light); line-height: 1.8;">
-                <p style="color: var(--dark); font-weight: 600; font-size: 1.3rem; margin-bottom: 1rem;">Mieles monofloral puras con 7 variedades diferenciadas</p>
+            <h2 style="color: white;">¿Por qué AMBAR es diferente?</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.15rem; color: #E0D5C8; line-height: 1.8;">
+                <p style="color: white; font-weight: 600; font-size: 1.3rem; margin-bottom: 1rem;">Mieles monofloral puras con 7 variedades diferenciadas</p>
                 <p>Floraciones autóctonas de Córdoba • Menor contenido de azúcar • Mayor sabor floral • Propiedades específicas por tipo • Artesanal, sin agrotóxicos</p>
-                <p style="color: var(--accent); font-weight: 700; font-size: 1.2rem; margin-top: 1.5rem;">AMBAR es simplemente mejor.</p>
+                <p style="color: #F4A030; font-weight: 700; font-size: 1.2rem; margin-top: 1.5rem;">AMBAR es simplemente mejor.</p>
             </div>
         </div>
     </section>
