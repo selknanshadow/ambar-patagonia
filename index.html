@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mieles monofloral de las sierras de Córdoba: Mistol, Algarrobo, Acacia, Romero, Atamisky, Jarilla. Directas desde Tierra del Fuego.">
-    <meta name="og:title" content="AMBAR Patagonia - Miel Premium de Córdoba">
-    <meta name="og:description" content="Miel monofloral artesanal de las sierras de Córdoba. Calidad superior a la miel multifloral de Entre Ríos.">
-    <meta name="og:image" content="logo_ambar.jpg">
+    <meta name="og:title" content="AMBAR Patagonia - Miel Pura y Artesanal">
+    <meta name="og:description" content="Miel pura y artesanal del monte nativo de Córdoba. Directa desde Tierra del Fuego.">
+    <meta name="og:image" content="https://selknanshadow.github.io/ambar-patagonia/logo_ambar.jpg">
     <title>AMBAR Patagonia - Miel Premium de Córdoba</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -680,13 +680,29 @@
             font-size: 0.95rem;
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
         }
 
-        .footer-cta a:hover {
-            background: var(--primary);
-            color: var(--dark);
-            border-color: var(--primary);
-            transform: translateY(-2px);
+        .footer-cta a:nth-child(1) {
+            background: #25D366;
+            border-color: #25D366;
+            color: white;
+        }
+
+        .footer-cta a:nth-child(1):hover {
+            background: #20BA5A;
+            border-color: #20BA5A;
+        }
+
+        .footer-cta a:nth-child(2) {
+            background: #E4405F;
+            border-color: #E4405F;
+            color: white;
+        }
+
+        .footer-cta a:nth-child(2):hover {
+            background: #D43456;
+            border-color: #D43456;
         }
 
         .sociales {
@@ -719,326 +735,4 @@
                 box-shadow: 0 0 0 0 rgba(229, 169, 60, 0.7);
             }
             70% {
-                box-shadow: 0 0 0 20px rgba(229, 169, 60, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(229, 169, 60, 0);
-            }
-        }
-
-        @keyframes bounce-arrow {
-            0%, 100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            50% {
-                transform: translateY(-12px);
-                opacity: 1;
-            }
-        }
-
-        .formulario-wrapper {
-            animation: pulse-glow 2.5s infinite;
-            border: 3px solid var(--primary);
-            border-radius: var(--radius-md);
-            padding: 2.5rem;
-            background: white;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .arrow-formulario {
-            display: inline-block;
-            animation: bounce-arrow 1.5s ease-in-out infinite;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 850px) {
-            .proceso-contenido {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav {
-                gap: 1.5rem;
-            }
-
-            .comparison {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 70px 20px 80px;
-            }
-
-            .footer-cta {
-                flex-direction: column;
-                max-width: 300px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .footer-cta a {
-                justify-content: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- HEADER -->
-    <header>
-        <div class="container">
-            <div class="logo">
-                <img src="logo_ambar.jpg" alt="AMBAR Logo">
-            </div>
-            <nav class="nav">
-                <a href="#variedades">Variedades</a>
-                <a href="#envios">Envíos</a>
-                <a href="#contacto">Contacto</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <img src="logo_ambar.jpg" alt="AMBAR Logo" style="height: 120px; width: auto; margin-bottom: 2rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));">
-            <h1>Miel Pura Artesanal del Monte Nativo</h1>
-            <p class="tagline">Elaborada y cosechada en San Marcos Sierras, Córdoba</p>
-            <p>
-                El monte nativo le brinda propiedades naturales únicas que ayudan a mejorar nuestras defensas y energizar el cuerpo de forma natural.<br>
-                Rica en <strong>antioxidantes, hierro y potasio</strong>. Seis variedades monofloral: <strong>Mistol, Algarrobo, Acacia, Romero, Atamisky, Jarilla</strong>.<br>
-                Directa desde Tierra del Fuego a tu mesa.
-            </p>
-            <a href="#contacto" class="cta-primary">Conocer Variedades</a>
-        </div>
-    </section>
-
-    <!-- DIFERENCIAL -->
-    <section class="diferencial">
-        <div class="container">
-            <h2 style="color: white;">¿Por qué AMBAR es diferente?</h2>
-            <div style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.15rem; color: #E0D5C8; line-height: 1.8;">
-                <p style="color: white; font-weight: 600; font-size: 1.3rem; margin-bottom: 1rem;">Mieles monofloral puras con 7 variedades diferenciadas</p>
-                <p>Floraciones autóctonas de Córdoba • Menor contenido de azúcar • Mayor sabor floral • Propiedades específicas por tipo • Artesanal, sin agrotóxicos</p>
-                <p style="color: #F4A030; font-weight: 700; font-size: 1.2rem; margin-top: 1.5rem;">AMBAR es simplemente mejor.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESO -->
-    <section class="proceso">
-        <div class="container">
-            <h2>¿Cómo se elabora nuestra Miel?</h2>
-            <div class="proceso-contenido">
-                <div class="proceso-texto">
-                    <p style="font-size: 1.15rem; font-weight: 600; color: var(--dark); line-height: 1.9;">
-                        <strong>La miel es producto directo de la naturaleza.</strong> Las abejas recolectan el néctar de la flora que rodea sus colmenas, que florece en determinadas épocas del año. Por eso, cada cosecha es única e irrepetible.
-                    </p>
-                    <p style="font-size: 1.15rem; font-weight: 600; color: var(--dark); line-height: 1.9;">
-                        En San Marcos Sierras, los productores utilizan un método inteligente: <strong>rotan las colmenas</strong> llevándolas a lugares donde predomina una flor específica en cada estación. Cuando florece el Mistol, las colmenas se trasladan a zonas de Mistol. Luego al Algarrobo, después a la Acacia, y así sucesivamente.
-                    </p>
-                    <p style="font-size: 1.15rem; font-weight: 600; color: var(--dark); line-height: 1.9;">
-                        Aunque la abeja poliniza múltiples flores, este movimiento estratégico <strong>induce a que el néctar predominante provenga de la flor elegida</strong>, generando mieles con características, sabor y propiedades únicas según la flora.
-                    </p>
-                    <p style="margin-top: 1.8rem; font-style: italic; color: var(--accent); font-size: 1.1rem; font-weight: 700;">
-                        Resultado: 7 mieles diferentes, 7 sabores distintos, 7 perfiles de beneficios naturales. Cada frasco cuenta la historia de una estación, una flor, una cosecha irrepetible.
-                    </p>
-                </div>
-                <div class="proceso-visual">
-                    <div class="proceso-paso">
-                        <div class="paso-numero">1</div>
-                        <div style="width: 100%; height: 120px; background: var(--primary-light); border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 2.5rem;">🌻</div>
-                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem;">Floración</p>
-                        <p style="font-size: 0.95rem;">Flora autóctona de Córdoba florece según estación</p>
-                    </div>
-                    <div class="proceso-paso">
-                        <div class="paso-numero">2</div>
-                        <div style="width: 100%; height: 120px; background: var(--primary-light); border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 2.5rem;">🐝</div>
-                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem;">Traslado</p>
-                        <p style="font-size: 0.95rem;">Colmenas se mueven a zonas de flora predominante</p>
-                    </div>
-                    <div class="proceso-paso">
-                        <div class="paso-numero">3</div>
-                        <div style="width: 100%; height: 120px; background: var(--primary-light); border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 2.5rem;">✨</div>
-                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem;">Recolección</p>
-                        <p style="font-size: 0.95rem;">Abejas polinizan flora principal + otras plantas</p>
-                    </div>
-                    <div class="proceso-paso">
-                        <div class="paso-numero">4</div>
-                        <div style="width: 100%; height: 120px; background: var(--primary-light); border-radius: 12px; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 2.5rem;">🍯</div>
-                        <p style="font-weight: 700; font-size: 1.1rem; color: var(--dark); margin-bottom: 0.5rem;">Cosecha</p>
-                        <p style="font-size: 0.95rem;">Miel con características únicas de esa flor</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- VARIEDADES -->
-    <section class="variedades" id="variedades">
-        <div class="container">
-            <h2>Nuestras Variedades</h2>
-            <div class="grid-variedades">
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="mistol.jfif" alt="Miel de Mistol">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>🌟 Miel de Mistol</h3>
-                        <p class="variedad-flor">Producto Estrella</p>
-                        <p class="variedad-desc">Propiedades antibacterianas y expectorantes. Alivia la tos y el dolor de garganta de forma natural.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="jarilla.jfif" alt="Miel de Jarilla">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>Miel de Jarilla</h3>
-                        <p class="variedad-flor">Rica en Potasio</p>
-                        <p class="variedad-desc">El potasio de la planta de jarilla favorece la salud de articulaciones y huesos. Ideal para mantenimiento óseo.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="algarrobo.jfif" alt="Miel de Algarrobo">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>Miel de Algarrobo</h3>
-                        <p class="variedad-flor">Propiedades Energéticas</p>
-                        <p class="variedad-desc">Extrae sus propiedades del fruto del algarrobo. Perfecta para recuperación de energía y vitalidad.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="acacia.jfif" alt="Miel de Acacia">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>Miel de Acacia</h3>
-                        <p class="variedad-flor">Rica en Hierro</p>
-                        <p class="variedad-desc">Contenido natural de hierro. Favorece la circulación y ayuda a fortalecer el sistema inmunológico.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="romero.jfif" alt="Miel de Romero">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>Miel de Romero</h3>
-                        <p class="variedad-flor">Cualidades Hepáticas</p>
-                        <p class="variedad-desc">Propiedades beneficiosas para el hígado y los riñones. Mejora la digestión y la memoria.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="atamisky.jfif" alt="Miel de Atamisky">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>Miel de Atamisky</h3>
-                        <p class="variedad-flor">Digestión y Bienestar</p>
-                        <p class="variedad-desc">Ayuda con la digestión lenta y molestias estomacales. Propiedades naturales para el confort digestivo.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-
-                <div class="variedad-card">
-                    <div class="variedad-imagen">
-                        <img src="multifloral.jfif" alt="Miel Multifloral">
-                    </div>
-                    <div class="variedad-info">
-                        <h3>Miel Multifloral</h3>
-                        <p class="variedad-flor">Propiedades Combinadas</p>
-                        <p class="variedad-desc">Contiene propiedades de todas nuestras variedades. La opción completa para múltiples beneficios.</p>
-                        <p class="variedad-precio">500g: $8.000 | 1kg: $14.000 | 2kg: $25.000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIOS -->
-    <section class="testimonios">
-        <div class="container">
-            <h2>Lo que dicen nuestros clientes</h2>
-            <div class="testimonios-grid">
-                <div class="testimonio">
-                    <p>"La diferencia de sabor es notable. Definitivamente no es la miel de supermercado."</p>
-                    <p class="testimonio-autor">— María G., Río Grande</p>
-                </div>
-                <div class="testimonio">
-                    <p>"Compré la de Mistol y me enamoré. Ahora la recomiendo a todos mis amigos."</p>
-                    <p class="testimonio-autor">— Carlos R., Buenos Aires</p>
-                </div>
-                <div class="testimonio">
-                    <p>"Excelente calidad, envasado cuidadoso y atención al detalle. Es un producto premium."</p>
-                    <p class="testimonio-autor">— Ana L., Córdoba</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FORMULARIO JOTFORM -->
-    <section class="formulario-jotform" style="padding: 90px 20px; background: var(--light);">
-        <div class="container">
-            <div class="formulario-wrapper">
-                <script src='https://cdn.jotfor.ms/agent/embedjs/019cecf887a571e39f172d22dfce37d7f4b0/embed.js'></script>
-            </div>
-        </div>
-    </section>
-
-    <!-- ENVIOS -->
-    <section class="envios" id="envios">
-        <div class="container">
-            <h2>Envíos a Todo el País</h2>
-            <div class="envios-info">
-                <p>📦 <strong>Envíos a todas las provincias de Argentina</strong></p>
-                <p>🚚 Embalaje especial para garantizar que tu miel llegue en perfecto estado</p>
-                <p>💬 Consultá por costo de envío vía WhatsApp</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer id="contacto">
-        <img src="logo_ambar.jpg" alt="AMBAR Logo" style="height: 80px; width: auto; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4)); opacity: 0.9;">
-        <div class="footer-content">
-            <h3>Contacta con nosotros</h3>
-            <p>Realizá tu pedido hoy y disfruta de miel premium directa desde Tierra del Fuego.</p>
-        </div>
-        <div class="footer-cta">
-            <a href="https://wa.me/5492964486908?text=Hola%20AMBAR%21%20Me%20interesa%20conocer%20sus%20mieles" target="_blank">💬 WhatsApp</a>
-            <a href="https://www.instagram.com/ambar.patagonia" target="_blank">📸 Instagram</a>
-        </div>
-        <div class="sociales">
-            <a href="https://www.instagram.com/ambar.patagonia" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com/share/1CjcK8pKwA/" target="_blank">Facebook</a>
-            <a href="https://wa.me/5492964486908" target="_blank">WhatsApp</a>
-        </div>
-        <div class="footer-bottom">
-            <p>AMBAR Patagonia © 2024. Mieles artesanales de Córdoba.</p>
-            <p>Desde Río Grande, Tierra del Fuego, hacia el mundo. 🍯</p>
-        </div>
-    </footer>
-</body>
-</html>
+          
