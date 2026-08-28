@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÁMBAR Patagonia — Mieles de Monte</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HERO -->
+  <header style="text-align: center; padding: 3rem 1rem;">
+    <h1>ÁMBAR</h1>
+    <p>Miel Pura Artesanal · Productos naturales de alta calidad</p>
+  </header>
+
+  <!-- CATALOGO DE MIELES -->
+  <section class="products-grid">
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="mistol.jpg" alt="Miel de Mistol">
+      </div>
+      <h3>MISTOL</h3>
+      <p class="product-subtitle">Intensa · Robusta · Carácter único</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Mistol" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="algarrobo.jpg" alt="Miel de Algarrobo">
+      </div>
+      <h3>ALGARROBO</h3>
+      <p class="product-subtitle">Cremosa · Dulce · Notas de frutos</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Algarrobo" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="acacia.jpg" alt="Miel de Acacia">
+      </div>
+      <h3>ACACIA</h3>
+      <p class="product-subtitle">Suave · Floral · Delicada</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Acacia" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="romero.jpg" alt="Miel de Romero">
+      </div>
+      <h3>ROMERO</h3>
+      <p class="product-subtitle">Aromática · Herbal · Ligera</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Romero" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="Jarilla.jpg" alt="Miel de Jarilla">
+      </div>
+      <h3>JARILLA</h3>
+      <p class="product-subtitle">Serrana · Silvestre · Resinosa</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Jarilla" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="atamisky.jpg" alt="Miel de Atamisky">
+      </div>
+      <h3>ATAMISKY</h3>
+      <p class="product-subtitle">Exótica · Persistente · Autóctona</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Atamisky" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+    <article class="product-card">
+      <div class="product-image-container">
+        <img src="multifloral.jpg" alt="Miel Multiflora">
+      </div>
+      <h3>MULTIFLORA</h3>
+      <p class="product-subtitle">Equilibrada · Riquísima · Tradicional</p>
+      <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20Multiflora" class="btn-whatsapp">QUIERO ESTA MIEL →</a>
+    </article>
+
+  </section>
+
+  <!-- SECCIÓN ESENCIA CON TU FOTO -->
+  <section style="max-width: 1000px; margin: 3rem auto; padding: 0 1.5rem; text-align: center;">
+    <h2>NUESTRA ESENCIA</h2>
+    <p style="margin-bottom: 1.5rem;">Cosechamos y seleccionamos cada variedad respetando el origen natural del monte autóctono de San Marcos Sierras.</p>
+    <img src="Portada2.jpg" alt="Variedad de Mieles Ámbar" class="banner-esencia">
+  </section>
+
+  <!-- PROCESO DEL MONTE A TU MESA -->
+  <section class="process-section">
+    <h2>DEL MONTE A TU MESA</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <span class="step-number">01</span>
+        <h4>La Floración</h4>
+        <p>Las flores del monte nativo florecen según la estación, ofreciendo néctares únicos.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-number">02</span>
+        <h4>Las Colmenas</h4>
+        <p>Ubicación estratégica buscando donde predomina la floración elegida.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-number">03</span>
+        <h4>Las Abejas</h4>
+        <p>Las abejas transforman el néctar en miel pura de manera 100% natural.</p>
+      </div>
+      <div class="process-step">
+        <span class="step-number">04</span>
+        <h4>La Cosecha</h4>
+        <p>Extracción cuidada para conservar el perfil aromático de cada temporada.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
