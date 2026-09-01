@@ -109,10 +109,8 @@
             width: 100%;
         }
 
-        /* HERO */
+        /* HERO CON CARRUSEL */
         .hero {
-            background: linear-gradient(135deg, rgba(26, 16, 12, 0.3) 0%, rgba(46, 31, 27, 0.3) 100%),
-                        url('portada.jpg') center/cover no-repeat;
             color: white;
             padding: 100px 20px 110px;
             text-align: center;
@@ -124,10 +122,52 @@
             justify-content: center;
         }
 
+        .hero-slides {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            animation: carrusel 24s infinite;
+        }
+
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(26, 16, 12, 0.35) 0%, rgba(46, 31, 27, 0.45) 100%);
+        }
+
+        .hero-slide:nth-child(1) { animation-delay: 0s; }
+        .hero-slide:nth-child(2) { animation-delay: 6s; }
+        .hero-slide:nth-child(3) { animation-delay: 12s; }
+        .hero-slide:nth-child(4) { animation-delay: 18s; }
+
+        @keyframes carrusel {
+            0%    { opacity: 0; transform: scale(1.06); }
+            4%    { opacity: 1; }
+            25%   { opacity: 1; }
+            29%   { opacity: 0; }
+            100%  { opacity: 0; transform: scale(1); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-slide { animation: none; }
+            .hero-slide:nth-child(1) { opacity: 1; }
+        }
+
         .hero .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .hero img {
@@ -283,15 +323,31 @@
 
         .proceso-paso {
             background: white;
-            padding: 1.4rem 1.8rem;
+            padding: 1rem 1.4rem 1rem 1rem;
             border-radius: var(--radius-md);
             text-align: left;
             border: 1px solid rgba(0,0,0,0.04);
             box-shadow: var(--shadow-sm);
             display: flex;
             align-items: center;
-            gap: 1.2rem;
+            gap: 1.1rem;
             transition: transform 0.3s ease;
+        }
+
+        .paso-imagen {
+            width: 92px;
+            height: 92px;
+            min-width: 92px;
+            border-radius: 14px;
+            overflow: hidden;
+            background: var(--primary-light);
+        }
+
+        .paso-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .proceso-paso:hover {
@@ -303,9 +359,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 46px;
-            height: 46px;
-            min-width: 46px;
+            width: 34px;
+            height: 34px;
+            min-width: 34px;
+            font-size: 0.95rem;
             background: var(--primary-light);
             color: var(--primary-hover);
             border: 2px solid var(--primary);
@@ -710,9 +767,15 @@
             }
 
             .paso-numero {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .paso-imagen {
+                width: 70px;
+                height: 70px;
+                min-width: 70px;
             }
 
             .footer-cta {
@@ -749,9 +812,15 @@
 
     <!-- HERO -->
     <section class="hero">
+        <div class="hero-slides">
+            <div class="hero-slide" style="background-image: url('portada.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('slide2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('slide3.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('slide4.jpg');"></div>
+        </div>
         <div class="container">
             <img src="logo2.jpeg" alt="AMBAR Logo">
-            <h1>Miel Pura Artesanal</h1>
+            <h1>Miel Pura Artesanal del Monte Nativo</h1>
             <p class="tagline">Elaborada y cosechada en San Marcos Sierras, Córdoba</p>
             <p>El monte nativo le brinda propiedades naturales únicas que ayudan a mejorar nuestras defensas y energizar el cuerpo de forma natural.<br>Rica en <strong>antioxidantes, hierro y potasio</strong>. Seis variedades monofloral: <strong>Mistol, Algarrobo, Acacia, Romero, Atamisky, Jarilla</strong>.<br>Directa desde Tierra del Fuego a tu mesa.</p>
             <a href="#contacto" class="cta-primary">Conocer Variedades</a>
@@ -766,51 +835,6 @@
                 <p>Mieles monofloral puras con 7 variedades diferenciadas</p>
                 <p>Floraciones autóctonas de Córdoba • Menor contenido de azúcar • Mayor sabor floral • Propiedades específicas por tipo • Artesanal, sin agrotóxicos</p>
                 <p>AMBAR es simplemente mejor.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESO -->
-    <section class="proceso">
-        <div class="container">
-            <h2>¿Cómo se elabora nuestra Miel?</h2>
-            <div class="proceso-contenido">
-                <div class="proceso-texto">
-                    <p><strong>La miel es producto directo de la naturaleza.</strong> Las abejas recolectan el néctar de la flora que rodea sus colmenas, que florece en determinadas épocas del año. Por eso, cada cosecha es única e irrepetible.</p>
-                    <p>En San Marcos Sierras, los productores utilizan un método inteligente: <strong>rotan las colmenas</strong> llevándolas a lugares donde predomina una flor específica en cada estación. Cuando florece el Mistol, las colmenas se trasladan a zonas de Mistol. Luego al Algarrobo, después a la Acacia, y así sucesivamente.</p>
-                    <p>Aunque la abeja poliniza múltiples flores, este movimiento estratégico <strong>induce a que el néctar predominante provenga de la flor elegida</strong>, generando mieles con características, sabor y propiedades únicas según la flora.</p>
-                    <p style="margin-top: 1.8rem; font-style: italic; color: var(--accent); font-size: 1.1rem; font-weight: 700;">Resultado: 7 mieles diferentes, 7 sabores distintos, 7 perfiles de beneficios naturales. Cada frasco cuenta la historia de una estación, una flor, una cosecha irrepetible.</p>
-                </div>
-                <div class="proceso-visual">
-                    <div class="proceso-paso">
-                        <div class="paso-numero">1</div>
-                        <div>
-                            <p><strong>Floración</strong></p>
-                            <p>Flora autóctona de Córdoba florece según estación</p>
-                        </div>
-                    </div>
-                    <div class="proceso-paso">
-                        <div class="paso-numero">2</div>
-                        <div>
-                            <p><strong>Traslado</strong></p>
-                            <p>Colmenas se mueven a zonas de flora predominante</p>
-                        </div>
-                    </div>
-                    <div class="proceso-paso">
-                        <div class="paso-numero">3</div>
-                        <div>
-                            <p><strong>Recolección</strong></p>
-                            <p>Abejas polinizan flora principal + otras plantas</p>
-                        </div>
-                    </div>
-                    <div class="proceso-paso">
-                        <div class="paso-numero">4</div>
-                        <div>
-                            <p><strong>Cosecha</strong></p>
-                            <p>Miel con características únicas de esa flor</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -896,6 +920,55 @@
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Multiflora" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="proceso">
+        <div class="container">
+            <h2>¿Cómo se elabora nuestra Miel?</h2>
+            <div class="proceso-contenido">
+                <div class="proceso-texto">
+                    <p><strong>La miel es producto directo de la naturaleza.</strong> Las abejas recolectan el néctar de la flora que rodea sus colmenas, que florece en determinadas épocas del año. Por eso, cada cosecha es única e irrepetible.</p>
+                    <p>En San Marcos Sierras, los productores utilizan un método inteligente: <strong>rotan las colmenas</strong> llevándolas a lugares donde predomina una flor específica en cada estación. Cuando florece el Mistol, las colmenas se trasladan a zonas de Mistol. Luego al Algarrobo, después a la Acacia, y así sucesivamente.</p>
+                    <p>Aunque la abeja poliniza múltiples flores, este movimiento estratégico <strong>induce a que el néctar predominante provenga de la flor elegida</strong>, generando mieles con características, sabor y propiedades únicas según la flora.</p>
+                    <p style="margin-top: 1.8rem; font-style: italic; color: var(--accent); font-size: 1.1rem; font-weight: 700;">Resultado: 7 mieles diferentes, 7 sabores distintos, 7 perfiles de beneficios naturales. Cada frasco cuenta la historia de una estación, una flor, una cosecha irrepetible.</p>
+                </div>
+                <div class="proceso-visual">
+                    <div class="proceso-paso">
+                        <div class="paso-numero">1</div>
+                        <div class="paso-imagen"><img src="floracion.jpg" alt="Floración"></div>
+                        <div>
+                            <p><strong>Floración</strong></p>
+                            <p>Flora autóctona de Córdoba florece según estación</p>
+                        </div>
+                    </div>
+                    <div class="proceso-paso">
+                        <div class="paso-numero">2</div>
+                        <div class="paso-imagen"><img src="colmenas.jpg" alt="Traslado"></div>
+                        <div>
+                            <p><strong>Traslado</strong></p>
+                            <p>Colmenas se mueven a zonas de flora predominante</p>
+                        </div>
+                    </div>
+                    <div class="proceso-paso">
+                        <div class="paso-numero">3</div>
+                        <div class="paso-imagen"><img src="abejas.jpg" alt="Recolección"></div>
+                        <div>
+                            <p><strong>Recolección</strong></p>
+                            <p>Abejas polinizan flora principal + otras plantas</p>
+                        </div>
+                    </div>
+                    <div class="proceso-paso">
+                        <div class="paso-numero">4</div>
+                        <div class="paso-imagen"><img src="cosecha.jpg" alt="Cosecha"></div>
+                        <div>
+                            <p><strong>Cosecha</strong></p>
+                            <p>Miel con características únicas de esa flor</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
