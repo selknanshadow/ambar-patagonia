@@ -682,17 +682,22 @@
             margin-bottom: 2px;
         }
 
-        /* VARIEDADES */
+        /* VARIEDADES
+           Fondo oscuro a propósito: sobre blanco, las tarjetas blancas
+           se fundían con la página y la descripción no se leía. */
         .variedades {
             padding: 90px 20px;
-            background: white;
+            background:
+                radial-gradient(circle at 15% 0%, rgba(229, 169, 60, 0.10), transparent 45%),
+                linear-gradient(160deg, #241710 0%, #35241A 55%, #2A1B12 100%);
+            border-top: 3px solid var(--primary);
         }
 
         .variedades h2 {
             text-align: center;
             font-size: clamp(1.8rem, 3.5vw, 2.5rem);
             margin-bottom: 3.5rem;
-            color: var(--dark);
+            color: #FFFFFF;
             font-weight: 700;
         }
 
@@ -708,7 +713,7 @@
 
         .variedades-sub {
             text-align: center;
-            color: var(--accent);
+            color: #F4A030;
             font-size: 1.1rem;
             font-style: italic;
             margin-top: -2.5rem;
@@ -727,8 +732,8 @@
             background: white;
             border-radius: var(--radius-md);
             overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.10);
             transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
@@ -736,15 +741,23 @@
 
         .variedad-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.42);
         }
 
+        /* Sin la línea de precios, el botón necesita su propio aire */
+        .variedad-card .btn-miel {
+            margin-top: 0.4rem;
+        }
+
+        /* Mismo encuadre que las tarjetas de oferta: 4:3 con recorte.
+           Da igual si la foto original es vertical, cuadrada o apaisada,
+           todas las tarjetas quedan iguales. */
         .variedad-imagen {
             width: 100%;
-            height: 320px;
+            aspect-ratio: 4 / 3;
             position: relative;
             overflow: hidden;
-            background: var(--light);
+            background: var(--primary-light);
         }
 
         .variedad-imagen img {
@@ -997,17 +1010,6 @@
             outline-offset: 3px;
         }
 
-        .variedad-precio {
-            margin: 0 1.5rem 1rem 1.5rem;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--dark);
-            background: var(--primary-light);
-            padding: 10px 14px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px dashed rgba(229, 169, 60, 0.6);
-        }
 
         /* TESTIMONIOS */
         .testimonios {
@@ -1309,8 +1311,8 @@
     <section class="hero">
         <div class="hero-slides">
             <div class="hero-slide" style="background-image: url('portada.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('slide2.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('slide3.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('slide2.jfif');"></div>
+            <div class="hero-slide" style="background-image: url('slide3.png');"></div>
             <div class="hero-slide" style="background-image: url('slide4.jpg');"></div>
         </div>
         <div class="container">
@@ -1363,7 +1365,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Líquida</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Mistol" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1378,7 +1379,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Espesa</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Algarrobo" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1393,7 +1393,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Semi-líquida</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Jarilla" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1408,7 +1407,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Semi-líquida</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Romero" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1423,7 +1421,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Espesa</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Atamisky" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1438,7 +1435,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Semi-espesa</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Acacia" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1453,7 +1449,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Semi-líquida</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Jud%C3%A1" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
@@ -1468,7 +1463,6 @@
                             <div class="ficha-dato"><span>Consistencia</span><strong>Variable</strong></div>
                         </div>
                     </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20Multifloral" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
             </div>
@@ -1489,7 +1483,7 @@
                 <div class="proceso-visual">
                     <div class="proceso-paso">
                         <div class="paso-numero">1</div>
-                        <div class="paso-imagen"><img src="floracion.jpg" alt="Floración"></div>
+                        <div class="paso-imagen"><img src="floracion.jfif" alt="Floración"></div>
                         <div>
                             <p><strong>Floración</strong></p>
                             <p>Flora autóctona de Córdoba florece según estación</p>
@@ -1505,7 +1499,7 @@
                     </div>
                     <div class="proceso-paso">
                         <div class="paso-numero">3</div>
-                        <div class="paso-imagen"><img src="abejas.jpg" alt="Recolección"></div>
+                        <div class="paso-imagen"><img src="abejas.jfif" alt="Recolección"></div>
                         <div>
                             <p><strong>Recolección</strong></p>
                             <p>Abejas polinizan flora principal + otras plantas</p>
@@ -1513,7 +1507,7 @@
                     </div>
                     <div class="proceso-paso">
                         <div class="paso-numero">4</div>
-                        <div class="paso-imagen"><img src="cosecha.jpg" alt="Cosecha"></div>
+                        <div class="paso-imagen"><img src="cosecha.jfif" alt="Cosecha"></div>
                         <div>
                             <p><strong>Cosecha</strong></p>
                             <p>Miel con características únicas de esa flor</p>
