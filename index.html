@@ -8,7 +8,7 @@
     <meta name="og:description" content="Miel pura y artesanal del monte nativo de Córdoba. Directa desde Tierra del Fuego.">
     <meta name="og:image" content="https://selknanshadow.github.io/ambar-patagonia/logo_ambar.jpg">
     <title>AMBAR Patagonia - Miel Pura y Artesanal</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -33,6 +33,9 @@
             --shadow-md: 0 10px 30px rgba(35, 24, 21, 0.08);
             --shadow-lg: 0 20px 40px rgba(35, 24, 21, 0.12);
             --radius-md: 20px;
+            /* Agregado para la vidriera de ofertas */
+            --oferta: #C0392B;
+            --oferta-light: #FDECEA;
         }
 
         body {
@@ -109,6 +112,28 @@
             width: 100%;
         }
 
+        /* Enlace de Ofertas: sólo aparece cuando hay campañas vigentes */
+        .nav a.nav-oferta {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .nav a.nav-oferta .pulso {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background: var(--oferta);
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            animation: latido 2s ease-in-out infinite;
+        }
+
+        @keyframes latido {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%      { opacity: 0.45; transform: scale(0.82); }
+        }
+
         /* HERO CON CARRUSEL */
         .hero {
             color: white;
@@ -160,6 +185,7 @@
         @media (prefers-reduced-motion: reduce) {
             .hero-slide { animation: none; }
             .hero-slide:nth-child(1) { opacity: 1; }
+            .nav a.nav-oferta .pulso { animation: none; }
         }
 
         .hero .container {
@@ -223,6 +249,278 @@
         .cta-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 30px rgba(229, 169, 60, 0.45);
+        }
+
+        /* ============================================================
+           OFERTAS · vidriera alimentada por la Plataforma de Marketing
+           Se completa sola desde ofertas.json. Si no hay campañas
+           vigentes, la sección entera no se muestra.
+           ============================================================ */
+        .ofertas {
+            padding: 90px 20px;
+            background: linear-gradient(180deg, var(--primary-light) 0%, #FFFFFF 100%);
+            border-bottom: 1px solid rgba(229, 169, 60, 0.25);
+        }
+
+        .ofertas h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 0.4rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .ofertas h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .ofertas-sub {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .campania {
+            max-width: 1140px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .campania:last-child { margin-bottom: 0; }
+
+        .campania-cabecera {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.6rem 1.2rem;
+            text-align: center;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(229, 169, 60, 0.35);
+        }
+
+        .campania-cabecera h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .campania-bajada {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .campania-vence {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: var(--primary-light);
+            border: 1px solid rgba(229, 169, 60, 0.5);
+            border-radius: 50px;
+            padding: 5px 16px;
+            white-space: nowrap;
+        }
+
+        .campania-vence.urgente {
+            color: #fff;
+            background: var(--oferta);
+            border-color: var(--oferta);
+        }
+
+        /* El tope de 360px es lo que evita que una campaña con un solo
+           producto estire la tarjeta (y la foto) a todo el ancho.
+           justify-content la deja centrada en vez de pegada a la izquierda. */
+        .grid-ofertas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 340px));
+            justify-content: center;
+            gap: 2.2rem;
+        }
+
+        .oferta-card {
+            background: white;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .oferta-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* La foto manda: relación fija, sin lienzo vacío ni recorte raro */
+        .oferta-imagen {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            position: relative;
+            overflow: hidden;
+            background: var(--primary-light);
+        }
+
+        .oferta-imagen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .oferta-card:hover .oferta-imagen img {
+            transform: scale(1.08);
+        }
+
+        .oferta-imagen.sin-foto::after {
+            content: '🍯';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            opacity: 0.45;
+        }
+
+        .oferta-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: var(--oferta);
+            color: #fff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+            z-index: 2;
+        }
+
+        .oferta-agotado {
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.78);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            z-index: 3;
+        }
+
+        .oferta-info {
+            padding: 1.8rem 1.5rem 1rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .oferta-info h4 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--dark);
+            font-size: 1.35rem;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .oferta-presentacion {
+            color: var(--accent);
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .oferta-desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .oferta-precio {
+            margin: 0 1.5rem 1rem 1.5rem;
+            padding: 12px 14px;
+            border-radius: 12px;
+            text-align: center;
+            background: var(--primary-light);
+            border: 1px dashed rgba(229, 169, 60, 0.6);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .precio-hoy {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .precio-antes {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Se renderiza siempre, con o sin texto: así el precio y el botón
+           quedan a la misma altura en todas las tarjetas de la fila. */
+        .oferta-ultimas {
+            margin: 0 1.5rem 0.8rem 1.5rem;
+            min-height: 1.1rem;
+            font-size: 0.82rem;
+            line-height: 1.1rem;
+            font-weight: 700;
+            color: var(--oferta);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mismo botón que las variedades */
+        .oferta-card .btn-miel {
+            margin-top: auto;
+        }
+
+        .btn-agotado {
+            display: block;
+            background: #E8E2D9;
+            color: var(--text-light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            letter-spacing: 0.5px;
+            margin: 0 1.5rem 1.5rem 1.5rem;
+            text-align: center;
+            cursor: not-allowed;
         }
 
         /* DIFERENCIAL */
@@ -362,7 +660,6 @@
             width: 34px;
             height: 34px;
             min-width: 34px;
-            font-size: 0.95rem;
             background: var(--primary-light);
             color: var(--primary-hover);
             border: 2px solid var(--primary);
@@ -461,6 +758,40 @@
             transform: scale(1.08);
         }
 
+        /* Si falta la foto (por ejemplo juda.jpg todavía sin subir),
+           la tarjeta muestra el frasco en vez de una imagen rota. */
+        .variedad-imagen.sin-foto {
+            background: var(--primary-light);
+        }
+
+        .variedad-imagen.sin-foto::after {
+            content: '🍯';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.4rem;
+            opacity: 0.45;
+        }
+
+        /* Cinta que marca una variedad que además está en promoción */
+        .variedad-imagen .cinta-promo {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--oferta);
+            color: #fff;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.22);
+            z-index: 2;
+        }
+
         .variedad-info {
             padding: 1.8rem 1.5rem 1rem 1.5rem;
             display: flex;
@@ -488,9 +819,158 @@
         .variedad-desc {
             font-size: 0.95rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             line-height: 1.6;
             flex-grow: 1;
+        }
+
+        /* Ficha técnica de cada miel: color y consistencia */
+        .variedad-ficha {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .ficha-dato {
+            flex: 1 1 auto;
+            min-width: 108px;
+            background: var(--light);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            padding: 8px 10px;
+            text-align: center;
+        }
+
+        .ficha-dato span {
+            display: block;
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-light);
+            font-weight: 700;
+            margin-bottom: 1px;
+        }
+
+        .ficha-dato strong {
+            display: block;
+            font-size: 0.86rem;
+            color: var(--dark);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        /* INDICACIONES DE USO */
+        .indicaciones {
+            padding: 90px 20px;
+            background: var(--light);
+        }
+
+        .indicaciones h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 0.4rem;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .indicaciones h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .indicaciones-sub {
+            text-align: center;
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .grid-indicaciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .indicacion {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 2rem 1.8rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .indicacion h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .indicacion ul {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        /* Flex, no grid: con grid cada <strong> del texto se volvía
+           un item más y las palabras se apilaban en vertical. */
+        .indicacion li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .indicacion li::before {
+            content: '•';
+            flex: none;
+            width: 16px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        .indicacion li.no::before {
+            content: '✕';
+            color: var(--oferta);
+            font-size: 0.9rem;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        /* La precaución es sanitaria: tiene que leerse distinto */
+        .indicacion.precaucion {
+            background: var(--oferta-light);
+            border-color: rgba(192, 57, 43, 0.25);
+        }
+
+        .indicacion.precaucion h3 {
+            color: var(--oferta);
+        }
+
+        .indicacion.precaucion li::before {
+            color: var(--oferta);
+        }
+
+        .indicacion.precaucion strong {
+            color: var(--oferta);
         }
 
         .btn-miel {
@@ -510,6 +990,11 @@
 
         .btn-miel:hover {
             background: #1FAE55;
+        }
+
+        .btn-miel:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 3px;
         }
 
         .variedad-precio {
@@ -762,6 +1247,14 @@
                 padding: 70px 20px 80px;
             }
 
+            .ofertas {
+                padding: 60px 20px;
+            }
+
+            .campania-cabecera h3 {
+                font-size: 1.3rem;
+            }
+
             .proceso-paso {
                 padding: 1rem;
             }
@@ -803,7 +1296,9 @@
                 <img src="logo_ambar.jpg" alt="AMBAR Logo">
             </div>
             <nav class="nav">
+                <a href="#ofertas" class="nav-oferta" id="nav-ofertas" hidden><span class="pulso"></span>Ofertas</a>
                 <a href="#variedades">Variedades</a>
+                <a href="#uso">Uso</a>
                 <a href="#envios">Envíos</a>
                 <a href="#contacto">Contacto</a>
             </nav>
@@ -814,16 +1309,28 @@
     <section class="hero">
         <div class="hero-slides">
             <div class="hero-slide" style="background-image: url('portada.jpg');"></div>
-            <div class="hero-slide" style="background-image: url('slide2.jfif');"></div>
-            <div class="hero-slide" style="background-image: url('slide3.png');"></div>
+            <div class="hero-slide" style="background-image: url('slide2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('slide3.jpg');"></div>
             <div class="hero-slide" style="background-image: url('slide4.jpg');"></div>
         </div>
         <div class="container">
             <img src="logo2.jpeg" alt="AMBAR Logo">
             <h1>Miel Pura Artesanal del Monte Nativo</h1>
             <p class="tagline">Elaborada y cosechada en San Marcos Sierras, Córdoba</p>
-            <p>El monte nativo le brinda propiedades naturales únicas que ayudan a mejorar nuestras defensas y energizar el cuerpo de forma natural.<br>Rica en <strong>antioxidantes, hierro y potasio</strong>. Seis variedades monofloral: <strong>Mistol, Algarrobo, Acacia, Romero, Atamisky, Jarilla</strong>.<br>Directa desde Tierra del Fuego a tu mesa.</p>
+            <p>El monte nativo le brinda propiedades naturales únicas que ayudan a mejorar nuestras defensas y energizar el cuerpo de forma natural.<br>Rica en <strong>antioxidantes, hierro y potasio</strong>. Siete variedades monofloral: <strong>Mistol, Algarrobo, Jarilla, Romero, Atamisky, Acacia y Judá</strong>, más nuestra <strong>Multifloral especial</strong>.<br>Directa desde Tierra del Fuego a tu mesa.</p>
             <a href="#contacto" class="cta-primary">Conocer Variedades</a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         OFERTAS · la completa la Plataforma de Marketing
+         No editar a mano: el contenido sale de ofertas.json
+         ============================================================ -->
+    <section class="ofertas" id="ofertas" hidden>
+        <div class="container">
+            <h2>Ofertas Vigentes</h2>
+            <p class="ofertas-sub">Promociones activas por tiempo limitado.</p>
+            <div id="ofertas-contenedor"></div>
         </div>
     </section>
 
@@ -832,7 +1339,7 @@
         <div class="container">
             <h2>¿Por qué AMBAR es diferente?</h2>
             <div>
-                <p>Mieles monofloral puras con 7 variedades diferenciadas</p>
+                <p>Siete mieles monofloral puras, más una multifloral especial</p>
                 <p>Floraciones autóctonas de Córdoba • Menor contenido de azúcar • Mayor sabor floral • Propiedades específicas por tipo • Artesanal, sin agrotóxicos</p>
                 <p>AMBAR es simplemente mejor.</p>
             </div>
@@ -843,83 +1350,126 @@
     <section class="variedades" id="variedades">
         <div class="container">
             <h2>Nuestras Mieles</h2>
-            <p class="variedades-sub">Una flor. Una estación. Un sabor.</p>
+            <p class="variedades-sub">Cada miel es el reflejo de una estación y una foto del lugar que habita la colmena.</p>
             <div class="grid-variedades">
-                <div class="variedad-card">
+                <div class="variedad-card" data-miel="Mistol">
                     <div class="variedad-imagen"><img src="mistol.jpg" alt="Miel de Mistol"></div>
                     <div class="variedad-info">
                         <h3>Mistol 🌟</h3>
-                        <p class="variedad-flor">Producto Estrella</p>
-                        <p class="variedad-desc">Propiedades antibacterianas y expectorantes. Alivia la tos y el dolor de garganta de forma natural.</p>
+                        <p class="variedad-flor">Antibiótica y Expectorante</p>
+                        <p class="variedad-desc">La elegida frente a resfríos y anginas. Una cucharada sopera antes de dormir es el uso más tradicional de la casa.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar oscuro</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Líquida</strong></div>
+                        </div>
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Mistol" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
-                <div class="variedad-card">
-                    <div class="variedad-imagen"><img src="Jarilla.jpg" alt="Miel de Jarilla"></div>
-                    <div class="variedad-info">
-                        <h3>Jarilla</h3>
-                        <p class="variedad-flor">Rica en Potasio</p>
-                        <p class="variedad-desc">El potasio de la planta de jarilla favorece la salud de articulaciones y huesos.</p>
-                    </div>
-                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
-                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Jarilla" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
-                </div>
-
-                <div class="variedad-card">
+                <div class="variedad-card" data-miel="Algarrobo">
                     <div class="variedad-imagen"><img src="algarrobo.jpg" alt="Miel de Algarrobo"></div>
                     <div class="variedad-info">
                         <h3>Algarrobo</h3>
-                        <p class="variedad-flor">Propiedades Energéticas</p>
-                        <p class="variedad-desc">Extrae sus propiedades del fruto del algarrobo. Ideal para recuperar energía y vitalidad.</p>
+                        <p class="variedad-flor">Energizante y Antibiótica</p>
+                        <p class="variedad-desc">Extrae sus propiedades del fruto del algarrobo. Espesa y profundamente dulce, es la miel de la energía.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar claro</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Espesa</strong></div>
+                        </div>
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Algarrobo" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
-                <div class="variedad-card">
-                    <div class="variedad-imagen"><img src="acacia.jpg" alt="Miel de Acacia"></div>
+                <div class="variedad-card" data-miel="Jarilla">
+                    <div class="variedad-imagen"><img src="Jarilla.jpg" alt="Miel de Jarilla"></div>
                     <div class="variedad-info">
-                        <h3>Acacia</h3>
-                        <p class="variedad-flor">Rica en Hierro</p>
-                        <p class="variedad-desc">Contenido natural de hierro. Favorece la circulación y ayuda a fortalecer las defensas.</p>
+                        <h3>Jarilla</h3>
+                        <p class="variedad-flor">Sales de Potasio y Yodo</p>
+                        <p class="variedad-desc">Sus sales minerales acompañan la salud de las articulaciones y de la piel. Suave y fácil de untar.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar claro</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Semi-líquida</strong></div>
+                        </div>
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
-                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Acacia" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
+                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Jarilla" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
-                <div class="variedad-card">
+                <div class="variedad-card" data-miel="Romero">
                     <div class="variedad-imagen"><img src="romero.jpg" alt="Miel de Romero"></div>
                     <div class="variedad-info">
                         <h3>Romero</h3>
                         <p class="variedad-flor">Cualidades Hepáticas</p>
-                        <p class="variedad-desc">Propiedades beneficiosas para el hígado y los riñones. Ayuda a la digestión y la memoria.</p>
+                        <p class="variedad-desc">Acompaña el trabajo del hígado y el riñón. La más buscada por quienes cuidan la digestión.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Semi-líquida</strong></div>
+                        </div>
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Romero" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
-                <div class="variedad-card">
+                <div class="variedad-card" data-miel="Atamisky">
                     <div class="variedad-imagen"><img src="atamisky.jpg" alt="Miel de Atamisky"></div>
                     <div class="variedad-info">
                         <h3>Atamisky</h3>
-                        <p class="variedad-flor">Digestión y Bienestar</p>
-                        <p class="variedad-desc">Ayuda con la digestión lenta y las molestias estomacales. Sabor exótico y persistente.</p>
+                        <p class="variedad-flor">Digestiva</p>
+                        <p class="variedad-desc">Ayuda con la acidez estomacal y las digestiones lentas. Espesa, de sabor exótico y persistente.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Espesa</strong></div>
+                        </div>
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
                     <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Atamisky" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
 
-                <div class="variedad-card">
-                    <div class="variedad-imagen"><img src="multifloral.jpg" alt="Miel de Multiflora"></div>
+                <div class="variedad-card" data-miel="Acacia">
+                    <div class="variedad-imagen"><img src="acacia.jpg" alt="Miel de Acacia"></div>
                     <div class="variedad-info">
-                        <h3>Multiflora</h3>
-                        <p class="variedad-flor">Propiedades Combinadas</p>
-                        <p class="variedad-desc">Reúne las propiedades de todas nuestras variedades. La opción completa y tradicional.</p>
+                        <h3>Acacia</h3>
+                        <p class="variedad-flor">Antiinflamatoria</p>
+                        <p class="variedad-desc">Tradicionalmente elegida para acompañar dolores musculares y articulares. De las más claras del catálogo.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar clara</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Semi-espesa</strong></div>
+                        </div>
                     </div>
                     <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
-                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Multiflora" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
+                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Acacia" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
+                </div>
+
+                <div class="variedad-card" data-miel="Juda">
+                    <div class="variedad-imagen"><img src="juda.jpg" alt="Miel de Judá, del manzano de campo"></div>
+                    <div class="variedad-info">
+                        <h3>Judá</h3>
+                        <p class="variedad-flor">Manzano de Campo · Alto en Hierro</p>
+                        <p class="variedad-desc">El mayor contenido de hierro de nuestro catálogo. La incorporación más reciente, del manzano de campo.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Semi-líquida</strong></div>
+                        </div>
+                    </div>
+                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
+                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20de%20Jud%C3%A1" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
+                </div>
+
+                <div class="variedad-card" data-miel="Multiflora">
+                    <div class="variedad-imagen"><img src="multifloral.jpg" alt="Miel Multifloral"></div>
+                    <div class="variedad-info">
+                        <h3>Multifloral ✨</h3>
+                        <p class="variedad-flor">Especial · Nutrición Integral</p>
+                        <p class="variedad-desc">Todas las variedades combinadas en un solo frasco. La opción completa para quien quiere probarlo todo.</p>
+                        <div class="variedad-ficha">
+                            <div class="ficha-dato"><span>Color</span><strong>Ámbar variable</strong></div>
+                            <div class="ficha-dato"><span>Consistencia</span><strong>Variable</strong></div>
+                        </div>
+                    </div>
+                    <p class="variedad-precio">500g $8.000 &nbsp;·&nbsp; 1kg $14.000 &nbsp;·&nbsp; 2kg $25.000</p>
+                    <a href="https://wa.me/5492964486908?text=Hola!%20Quiero%20consultar%20por%20miel%20Multifloral" class="btn-miel" target="_blank">QUIERO ESTA MIEL →</a>
                 </div>
             </div>
         </div>
@@ -931,15 +1481,15 @@
             <h2>¿Cómo se elabora nuestra Miel?</h2>
             <div class="proceso-contenido">
                 <div class="proceso-texto">
-                    <p><strong>La miel es producto directo de la naturaleza.</strong> Las abejas recolectan el néctar de la flora que rodea sus colmenas, que florece en determinadas épocas del año. Por eso, cada cosecha es única e irrepetible.</p>
-                    <p>En San Marcos Sierras, los productores utilizan un método inteligente: <strong>rotan las colmenas</strong> llevándolas a lugares donde predomina una flor específica en cada estación. Cuando florece el Mistol, las colmenas se trasladan a zonas de Mistol. Luego al Algarrobo, después a la Acacia, y así sucesivamente.</p>
-                    <p>Aunque la abeja poliniza múltiples flores, este movimiento estratégico <strong>induce a que el néctar predominante provenga de la flor elegida</strong>, generando mieles con características, sabor y propiedades únicas según la flora.</p>
-                    <p style="margin-top: 1.8rem; font-style: italic; color: var(--accent); font-size: 1.1rem; font-weight: 700;">Resultado: 7 mieles diferentes, 7 sabores distintos, 7 perfiles de beneficios naturales. Cada frasco cuenta la historia de una estación, una flor, una cosecha irrepetible.</p>
+                    <p><strong>Cada miel es el reflejo de una estación y una foto del lugar que habita la colmena.</strong> Las abejas recolectan el néctar de la flora que las rodea, y esa flora florece en momentos precisos del año. Por eso ninguna cosecha se repite.</p>
+                    <p>En San Marcos Sierras los productores trabajan con un método paciente: <strong>rotan las colmenas</strong> siguiendo la floración. Cuando florece el Mistol, las colmenas viajan a zonas de Mistol. Después al Algarrobo, más tarde a la Acacia, y así durante todo el ciclo.</p>
+                    <p>La abeja poliniza muchas flores, pero ese movimiento <strong>hace que el néctar predominante provenga de la flor elegida</strong>. De ahí nacen mieles que se distinguen entre sí en color, consistencia, sabor y propiedades.</p>
+                    <p style="margin-top: 1.8rem; font-style: italic; color: var(--accent); font-size: 1.1rem; font-weight: 700;">Del ámbar oscuro y líquido del Mistol al ámbar claro y espeso del Algarrobo: ocho mieles, ocho perfiles distintos. Cada frasco cuenta la historia de una estación, una flor y una cosecha irrepetible.</p>
                 </div>
                 <div class="proceso-visual">
                     <div class="proceso-paso">
                         <div class="paso-numero">1</div>
-                        <div class="paso-imagen"><img src="floracion.jfif" alt="Floración"></div>
+                        <div class="paso-imagen"><img src="floracion.jpg" alt="Floración"></div>
                         <div>
                             <p><strong>Floración</strong></p>
                             <p>Flora autóctona de Córdoba florece según estación</p>
@@ -955,7 +1505,7 @@
                     </div>
                     <div class="proceso-paso">
                         <div class="paso-numero">3</div>
-                        <div class="paso-imagen"><img src="abejas.jfif" alt="Recolección"></div>
+                        <div class="paso-imagen"><img src="abejas.jpg" alt="Recolección"></div>
                         <div>
                             <p><strong>Recolección</strong></p>
                             <p>Abejas polinizan flora principal + otras plantas</p>
@@ -963,7 +1513,7 @@
                     </div>
                     <div class="proceso-paso">
                         <div class="paso-numero">4</div>
-                        <div class="paso-imagen"><img src="cosecha.jfif" alt="Cosecha"></div>
+                        <div class="paso-imagen"><img src="cosecha.jpg" alt="Cosecha"></div>
                         <div>
                             <p><strong>Cosecha</strong></p>
                             <p>Miel con características únicas de esa flor</p>
@@ -990,6 +1540,40 @@
                 <div class="testimonio">
                     <p>"Excelente calidad, envasado cuidadoso y atención al detalle. Es un producto premium."</p>
                     <p class="testimonio-autor">— Ana L., Córdoba</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INDICACIONES DE USO -->
+    <section class="indicaciones" id="uso">
+        <div class="container">
+            <h2>Cómo conservarla y usarla</h2>
+            <p class="indicaciones-sub">Miel cruda, sin pasteurizar. Se cuida distinto que la de góndola.</p>
+            <div class="grid-indicaciones">
+                <div class="indicacion">
+                    <h3>🏠 Almacenamiento</h3>
+                    <ul>
+                        <li><span>Guardar a temperatura ambiente, en un lugar seco.</span></li>
+                        <li class="no"><span>No guardar en la heladera: el frío la cristaliza y endurece.</span></li>
+                    </ul>
+                </div>
+
+                <div class="indicacion">
+                    <h3>🥄 Modo de uso</h3>
+                    <ul>
+                        <li><span>Para resfríos: <strong>1 cucharada sopera antes de dormir</strong>.</span></li>
+                        <li><span>Se puede agregar al mate o al té.</span></li>
+                        <li class="no"><span><strong>No hervir.</strong> El calor fuerte destruye sus propiedades.</span></li>
+                    </ul>
+                </div>
+
+                <div class="indicacion precaucion">
+                    <h3>⚠️ Precauciones</h3>
+                    <ul>
+                        <li class="no"><span><strong>No dar a menores de 2 años.</strong></span></li>
+                        <li><span>Es una recomendación sanitaria para toda miel natural, sin excepción.</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -1028,6 +1612,256 @@
             <p>Desde Río Grande, Tierra del Fuego, hacia el mundo. 🍯</p>
         </div>
     </footer>
+
+    <!-- ============================================================
+         VIDRIERA DE OFERTAS · lee ofertas.json que exporta el publisher
+         Si el archivo no existe o no hay campañas vigentes, la sección
+         queda oculta y la página se ve exactamente como antes.
+         ============================================================ -->
+    <script>
+    (function () {
+        "use strict";
+
+        var FUENTE = "ofertas.json";
+        var WHATSAPP_POR_DEFECTO = "5492964486908";
+
+        // Cualquier foto de variedad que falte muestra el frasco en lugar
+        // del icono de imagen rota del navegador.
+        document.querySelectorAll(".variedad-imagen img").forEach(function (img) {
+            function caer() {
+                var caja = img.parentElement;
+                if (caja) caja.classList.add("sin-foto");
+                img.remove();
+            }
+            img.addEventListener("error", caer);
+            if (img.complete && img.naturalWidth === 0) caer();
+        });
+
+        var seccion = document.getElementById("ofertas");
+        var contenedor = document.getElementById("ofertas-contenedor");
+        var enlaceNav = document.getElementById("nav-ofertas");
+        if (!seccion || !contenedor) return;
+
+        var pesos = new Intl.NumberFormat("es-AR", {
+            style: "currency",
+            currency: "ARS",
+            maximumFractionDigits: 0
+        });
+
+        function hoy() {
+            var d = new Date();
+            d.setHours(0, 0, 0, 0);
+            return d;
+        }
+
+        // "2026-09-30" -> Date local. new Date(str) lo tomaría como UTC
+        // y en Argentina adelantaría un día el vencimiento.
+        function aFecha(str) {
+            if (!str) return null;
+            var p = String(str).slice(0, 10).split("-");
+            if (p.length !== 3) return null;
+            var d = new Date(+p[0], +p[1] - 1, +p[2]);
+            return isNaN(d.getTime()) ? null : d;
+        }
+
+        function estaVigente(c) {
+            var h = hoy();
+            var desde = aFecha(c.desde);
+            var hasta = aFecha(c.hasta);
+            if (desde && h < desde) return false;
+            if (hasta && h > hasta) return false;
+            return true;
+        }
+
+        function diasRestantes(c) {
+            var hasta = aFecha(c.hasta);
+            if (!hasta) return null;
+            return Math.round((hasta - hoy()) / 86400000);
+        }
+
+        function textoVence(d) {
+            if (d === null) return "Sin fecha de cierre";
+            if (d <= 0) return "Último día";
+            if (d === 1) return "Queda 1 día";
+            return "Quedan " + d + " días";
+        }
+
+        function esc(s) {
+            return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+        }
+
+        function porcentaje(p) {
+            if (!p.precio_lista || !p.precio_oferta) return 0;
+            if (p.precio_oferta >= p.precio_lista) return 0;
+            return Math.round((1 - p.precio_oferta / p.precio_lista) * 100);
+        }
+
+        function armarTarjeta(prod, campania, wsp) {
+            var card = document.createElement("div");
+            card.className = "oferta-card";
+
+            var off = porcentaje(prod);
+            var agotado = prod.stock === "agotado";
+            var ultimas = prod.stock === "ultimas_unidades";
+            var precioHoy = prod.precio_oferta || prod.precio_lista;
+
+            // --- imagen ---
+            var caja = document.createElement("div");
+            caja.className = "oferta-imagen" + (prod.imagen ? "" : " sin-foto");
+            if (prod.imagen) {
+                var img = document.createElement("img");
+                img.src = prod.imagen;
+                img.alt = prod.nombre || "Producto AMBAR";
+                img.loading = "lazy";
+                img.onerror = function () {
+                    img.remove();
+                    caja.classList.add("sin-foto");
+                };
+                caja.appendChild(img);
+            }
+            if (off > 0 && !agotado) {
+                var badge = document.createElement("span");
+                badge.className = "oferta-badge";
+                badge.textContent = "-" + off + "%";
+                caja.appendChild(badge);
+            }
+            if (agotado) {
+                var tapa = document.createElement("div");
+                tapa.className = "oferta-agotado";
+                tapa.textContent = "Agotado";
+                caja.appendChild(tapa);
+            }
+            card.appendChild(caja);
+
+            // --- texto ---
+            var info = document.createElement("div");
+            info.className = "oferta-info";
+            info.innerHTML =
+                "<h4>" + esc(prod.nombre) + "</h4>" +
+                (prod.presentacion ? '<p class="oferta-presentacion">' + esc(prod.presentacion) + "</p>" : "") +
+                (prod.descripcion ? '<p class="oferta-desc">' + esc(prod.descripcion) + "</p>" : "");
+            card.appendChild(info);
+
+            // --- precio ---
+            var precio = document.createElement("div");
+            precio.className = "oferta-precio";
+            precio.innerHTML =
+                '<span class="precio-hoy">' + pesos.format(precioHoy) + "</span>" +
+                (off > 0 ? '<span class="precio-antes">' + pesos.format(prod.precio_lista) + "</span>" : "");
+            card.appendChild(precio);
+
+            var aviso = document.createElement("p");
+            aviso.className = "oferta-ultimas";
+            aviso.textContent = (ultimas && !agotado) ? "Últimas unidades" : "";
+            card.appendChild(aviso);
+
+            // --- botón ---
+            if (agotado) {
+                var muerto = document.createElement("span");
+                muerto.className = "btn-agotado";
+                muerto.textContent = "SIN STOCK";
+                card.appendChild(muerto);
+            } else {
+                var texto = "Hola AMBAR! Vi la promo \"" + (campania.titulo || "") +
+                    "\" en la web y quiero pedir " + (prod.nombre || "") +
+                    (prod.presentacion ? " (" + prod.presentacion + ")" : "") + ".";
+                var boton = document.createElement("a");
+                boton.className = "btn-miel";
+                boton.target = "_blank";
+                boton.rel = "noopener";
+                boton.href = "https://wa.me/" + wsp + "?text=" + encodeURIComponent(texto);
+                boton.textContent = "APROVECHAR OFERTA →";
+                card.appendChild(boton);
+            }
+
+            return card;
+        }
+
+        // "Judá" y "juda" tienen que coincidir: sin esto la cinta de
+        // promoción nunca aparecería en las mieles con tilde.
+        function sinTildes(s) {
+            return String(s || "").toLowerCase()
+                .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // Marca con una cinta las variedades que están en promoción,
+        // para que la sección de abajo no contradiga a la de arriba.
+        function marcarVariedades(nombres) {
+            document.querySelectorAll(".variedad-card[data-miel]").forEach(function (card) {
+                var miel = sinTildes(card.getAttribute("data-miel"));
+                var enPromo = nombres.some(function (n) { return n.indexOf(miel) !== -1; });
+                if (!enPromo) return;
+                var caja = card.querySelector(".variedad-imagen");
+                if (!caja || caja.querySelector(".cinta-promo")) return;
+                var cinta = document.createElement("span");
+                cinta.className = "cinta-promo";
+                cinta.textContent = "En oferta";
+                caja.appendChild(cinta);
+            });
+        }
+
+        function pintar(datos) {
+            var wsp = datos.whatsapp || WHATSAPP_POR_DEFECTO;
+            var activas = (datos.campanias || []).filter(function (c) {
+                return estaVigente(c) && (c.productos || []).length > 0;
+            });
+
+            if (!activas.length) return;
+
+            // Destacadas primero; después, las que vencen antes.
+            activas.sort(function (a, b) {
+                if (!!b.destacada !== !!a.destacada) return b.destacada ? 1 : -1;
+                var da = diasRestantes(a), db = diasRestantes(b);
+                return (da === null ? 9999 : da) - (db === null ? 9999 : db);
+            });
+
+            var enPromo = [];
+
+            activas.forEach(function (c) {
+                var bloque = document.createElement("div");
+                bloque.className = "campania";
+
+                var dias = diasRestantes(c);
+                var cab = document.createElement("div");
+                cab.className = "campania-cabecera";
+                cab.innerHTML =
+                    "<h3>" + esc(c.titulo) + "</h3>" +
+                    (c.bajada ? '<p class="campania-bajada">' + esc(c.bajada) + "</p>" : "") +
+                    '<span class="campania-vence' + (dias !== null && dias <= 3 ? " urgente" : "") + '">' +
+                    esc(textoVence(dias)) + "</span>";
+                bloque.appendChild(cab);
+
+                var grid = document.createElement("div");
+                grid.className = "grid-ofertas";
+                c.productos.forEach(function (p) {
+                    grid.appendChild(armarTarjeta(p, c, wsp));
+                    if (p.nombre) enPromo.push(sinTildes(p.nombre));
+                });
+                bloque.appendChild(grid);
+
+                contenedor.appendChild(bloque);
+            });
+
+            seccion.hidden = false;
+            if (enlaceNav) enlaceNav.hidden = false;
+            marcarVariedades(enPromo);
+        }
+
+        // El "?v=" evita que GitHub Pages sirva un JSON viejo desde caché.
+        fetch(FUENTE + "?v=" + Date.now(), { cache: "no-store" })
+            .then(function (r) {
+                if (!r.ok) throw new Error("HTTP " + r.status);
+                return r.json();
+            })
+            .then(pintar)
+            .catch(function (e) {
+                console.warn("[AMBAR] Sin ofertas para mostrar:", e.message);
+            });
+    })();
+    </script>
+
     <!-- ASISTENTE FLOTANTE -->
     <script src='https://cdn.jotfor.ms/agent/embedjs/019cecf887a571e39f172d22dfce37d7f4b0/embed.js'></script>
 
